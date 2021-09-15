@@ -5,7 +5,9 @@ class DefaultTheme {
     scaffoldBackgroundColor: Colors.white,
     brightness: Brightness.light,
     primaryColor: Colors.white,
-    accentColor: Colors.red[900],
+    colorScheme: ColorScheme.light(secondary: Colors.redAccent),
+    appBarTheme:
+        AppBarTheme(color: Colors.white, foregroundColor: Colors.black),
     backgroundColor: Colors.grey[900],
     textTheme: const TextTheme(
       headline1: TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
@@ -22,7 +24,9 @@ class DefaultTheme {
     scaffoldBackgroundColor: Colors.grey[900],
     brightness: Brightness.dark,
     primaryColor: Colors.grey[900],
-    accentColor: Colors.red[900],
+    appBarTheme:
+        AppBarTheme(color: Colors.grey[900], foregroundColor: Colors.white),
+    colorScheme: ColorScheme.dark(secondary: Colors.redAccent),
     backgroundColor: Colors.white,
     textTheme: const TextTheme(
         headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),

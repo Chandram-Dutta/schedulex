@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedulex/services/UrlLauncher.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:intl/intl.dart';
 
@@ -14,13 +15,15 @@ class _SchedulePageState extends State<SchedulePage> {
       _startTimeText = '',
       _endTimeText = '',
       _dateText = '',
-      _timeDetails = '';
+      _timeDetails = '',
+      _link = '';
 
   void calendarTapped(CalendarTapDetails details) {
     if (details.targetElement == CalendarElement.appointment ||
         details.targetElement == CalendarElement.agenda) {
       final Appointment appointmentDetails = details.appointments![0];
       _subjectText = appointmentDetails.subject;
+      _link = appointmentDetails.notes;
       _dateText = DateFormat('MMMM dd, yyyy')
           .format(appointmentDetails.startTime)
           .toString();
@@ -31,6 +34,7 @@ class _SchedulePageState extends State<SchedulePage> {
       _timeDetails = '$_startTimeText - $_endTimeText';
     } else if (details.targetElement == CalendarElement.calendarCell) {
       _subjectText = "No Events";
+      _link = null;
       _dateText = DateFormat('MMMM dd, yyyy').format(details.date!).toString();
       _timeDetails = '';
     }
@@ -68,6 +72,13 @@ class _SchedulePageState extends State<SchedulePage> {
               ),
             ),
             actions: <Widget>[
+              _link != null
+                  ? new ElevatedButton(
+                      onPressed: () {
+                        launchUrl(_link.toString());
+                      },
+                      child: new Text('Join'))
+                  : SizedBox(),
               new ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -110,36 +121,36 @@ List<Appointment> getAppointment(BuildContext context) {
         startTime: DateTime(2021, 8, 2, 9, 0, 0),
         endTime: DateTime(2021, 8, 2, 10, 0, 0),
         subject: "Lorem Ipsum",
-        notes: "Lorem Ipsum",
-        color: Theme.of(context).accentColor,
+        notes: "https://www.google.com",
+        color: Theme.of(context).colorScheme.secondary,
         location: "Lorem Ipsum"),
     Appointment(
         startTime: DateTime(2021, 8, 2, 10, 0, 0),
         endTime: DateTime(2021, 8, 2, 11, 0, 0),
         subject: "dolor sit",
-        notes: "dolor sit",
-        color: Theme.of(context).accentColor,
+        notes: "https://www.google.com",
+        color: Theme.of(context).colorScheme.secondary,
         location: "dolor sit"),
     Appointment(
         startTime: DateTime(2021, 8, 2, 11, 0, 0),
         endTime: DateTime(2021, 8, 2, 12, 0, 0),
         subject: "amet, consectetur",
-        notes: "amet, consectetur",
-        color: Theme.of(context).accentColor,
+        notes: "https://www.google.com",
+        color: Theme.of(context).colorScheme.secondary,
         location: "amet, consectetur"),
     Appointment(
         startTime: DateTime(2021, 8, 2, 12, 0, 0),
         endTime: DateTime(2021, 8, 2, 13, 0, 0),
         subject: "adipiscing elit,",
-        notes: "adipiscing elit,",
-        color: Theme.of(context).accentColor,
+        notes: "https://www.google.com",
+        color: Theme.of(context).colorScheme.secondary,
         location: "adipiscing elit,"),
     Appointment(
         startTime: DateTime(2021, 8, 2, 13, 0, 0),
         endTime: DateTime(2021, 8, 2, 14, 0, 0),
         subject: "sed do eiusmod",
-        notes: "sed do eiusmod",
-        color: Theme.of(context).accentColor,
+        notes: "https://www.google.com",
+        color: Theme.of(context).colorScheme.secondary,
         location: "sed do eiusmod"),
   ];
 

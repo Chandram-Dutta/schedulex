@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:schedulex/DefaultTheme.dart';
 import 'package:schedulex/screens/home/HomePage.dart';
 import 'package:schedulex/screens/schedule/SchedulePage.dart';
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'DebConf',
+      title: 'Schedule X',
       theme: DefaultTheme().lightTheme,
       darkTheme: DefaultTheme().darkTheme,
       initialRoute: '/',

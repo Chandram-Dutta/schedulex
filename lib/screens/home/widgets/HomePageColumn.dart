@@ -27,7 +27,7 @@ class HomePageMainColumn extends StatelessWidget {
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).accentColor),
+                      Theme.of(context).colorScheme.secondary),
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/schedule');
