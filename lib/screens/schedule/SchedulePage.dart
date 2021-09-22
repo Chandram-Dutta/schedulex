@@ -97,7 +97,7 @@ class _SchedulePageState extends State<SchedulePage> {
         title: Text("Lorem ipsum Schedule"),
       ),
       body: SfCalendar(
-        view: CalendarView.week,
+        view: CalendarView.schedule,
         dataSource: MeetingDataSource(getAppointment(context)),
         initialDisplayDate: DateTime(2021, 8, 2),
         selectionDecoration: BoxDecoration(
